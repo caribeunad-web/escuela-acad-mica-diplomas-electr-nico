@@ -1,0 +1,3607 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Diploma Electrónico - Consulta local</title>
+
+    <style>
+
+        /* =========================================================
+           CONFIGURACIÓN GENERAL
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: #333333;
+            background: #ffffff;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================================================
+           CONTENEDOR
+        ========================================================= */
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================================================
+           PARTE SUPERIOR
+        ========================================================= */
+
+        .top-section {
+            padding: 20px 0;
+            background: #ffffff;
+        }
+
+        .top-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo img {
+            width: 370px;
+            display: block;
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 14px;
+            flex-wrap: wrap;
+            color: #004669;
+            font-size: 16px;
+        }
+
+        .top-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #004669;
+        }
+
+        .top-links a:hover {
+            color: #f47920;
+        }
+
+        .top-links img {
+            
+            object-fit: contain;
+        }
+
+        .separador {
+            color: #999999;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .header {
+            background: #004669;
+            color: #ffffff;
+        }
+
+        .menu {
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 17px 10px;
+            display: inline-block;
+        }
+
+        .menu a:hover {
+            background: #003550;
+        }
+
+
+        /* =========================================================
+           MIGAS DE PAN
+        ========================================================= */
+
+        .breadcrumb-section {
+            background: #e6e6e6;
+            padding: 10px 0;
+        }
+
+        .breadcrumb {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            font-size: 14px;
+            color: #004669;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: " / ";
+            margin-left: 5px;
+            color: #777777;
+        }
+
+        .breadcrumb a {
+            color: #004669;
+        }
+
+        .breadcrumb a:hover {
+            color: #f47920;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 430px;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .hero-image-wrapper {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.05) 0%,
+                    rgba(0, 0, 0, 0.05) 55%,
+                    rgba(0, 0, 0, 0.48) 100%
+                );
+            pointer-events: none;
+        }
+
+        .hero-text {
+            position: absolute;
+            left: 15%;
+            right: 15%;
+            bottom: 55px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            margin: 0;
+            padding: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 25px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.75);
+        }
+
+        .hero-text::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.70);
+        }
+
+
+        /* =========================================================
+           CONTENIDO
+        ========================================================= */
+
+        .main {
+            padding: 45px 0;
+        }
+
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: #004669;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 0 25px 0;
+            text-align: left;
+        }
+
+        .line {
+            width: 70px;
+            height: 4px;
+            background: #f47920;
+            margin-bottom: 25px;
+        }
+
+        .description {
+            color: #444444;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .description p {
+            margin: 0 0 18px 0;
+        }
+
+        .correo {
+            color: blue;
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           FORMULARIO
+        ========================================================= */
+
+        .consulta-local {
+            width: 100%;
+            margin-top: 40px;
+            padding: 10px;
+            background: #ffffff;
+        }
+
+        .titulo-consulta {
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 38px;
+        }
+
+        .fila {
+            display: flex;
+            width: 100%;
+        }
+
+        .columna-izquierda {
+            width: 63%;
+            padding-right: 25px;
+        }
+
+        .columna-derecha {
+            width: 37%;
+            padding-left: 20px;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .etiqueta {
+            text-align: right;
+            margin-top: -25px;
+            margin-bottom: 135px;
+            padding-right: 5px;
+        }
+
+        .campo {
+            width: 100%;
+            height: 38px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #666666;
+            outline: none;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        }
+
+        .campo:focus {
+            border-color: #66afe9;
+            box-shadow: 0 0 5px rgba(102,175,233,.5);
+        }
+
+        .descripcion-csv {
+            margin-top: 8px;
+            margin-bottom: 42px;
+            line-height: 20px;
+            color: #666666;
+        }
+
+        .captcha-texto {
+            margin-top: 8px;
+            margin-bottom: 3px;
+            line-height: 20px;
+            color: #666666;
+        }
+
+
+        /* =========================================================
+           CAPTCHA
+        ========================================================= */
+
+        #captchaCanvas {
+            display: block;
+            width: 105px;
+            height: 45px;
+            margin-top: 0;
+        }
+
+        .recargar {
+            display: block;
+            padding: 0;
+            margin-top: 0;
+            border: 0;
+            background: transparent;
+            font-size: 21px;
+            color: #777777;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .recargar:hover {
+            color: #1B4F87;
+        }
+
+        .mensaje-captcha {
+            display: none;
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        /* =========================================================
+           BOTÓN COMPROBACIÓN
+        ========================================================= */
+
+        .boton-contenedor {
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid #cccccc;
+            padding-top: 20px;
+            margin-top: 30px;
+            margin-bottom: 35px;
+        }
+
+        .boton-comprobacion {
+            background-color: #337ab7;
+            color: #ffffff;
+            border: 1px solid #2e6da4;
+            border-radius: 4px;
+            padding: 8px 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .boton-comprobacion:hover {
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+        .boton-comprobacion:active {
+            background-color: #204d74;
+            border-color: #122b40;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-left: 4px solid #337ab7;
+            color: #555555;
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           IMAGEN TIENDA
+        ========================================================= */
+
+        .imagen-tienda {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .imagen-tienda img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer-unad {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-top: 4px solid #f58220;
+            color: #111;
+            padding: 20px 0 8px 0;
+        }
+
+        .footer-contenedor {
+            width: 1110px;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                270px
+                1fr
+                1fr
+                255px;
+
+            column-gap: 25px;
+            align-items: stretch;
+        }
+
+
+        /* =========================================================
+           COLUMNA IZQUIERDA FOOTER
+        ========================================================= */
+
+        .columna-izquierda {
+            padding-right: 15px;
+        }
+
+        .logo-tienda {
+            width: 198px;
+            height: auto;
+            display: block;
+            margin: 0 auto 17px auto;
+        }
+
+        .linea-gris {
+            width: 100%;
+            height: 1px;
+            background-color: #d4d4d4;
+            margin: 0 0 15px 0;
+        }
+
+        .lista-izquierda {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 5px;
+        }
+
+        .lista-izquierda li {
+            position: relative;
+            padding-left: 13px;
+            margin-bottom: 8px;
+            font-size: 10px;
+            line-height: 1.25;
+        }
+
+        .lista-izquierda li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #f58220;
+        }
+
+
+        /* =========================================================
+           CAJA TRANSPARENCIA
+        ========================================================= */
+
+        .caja-transparencia {
+            margin-top: 16px;
+            background-color: #004b6b;
+            color: white;
+            border-radius: 15px;
+            min-height: 67px;
+            padding: 10px 12px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .caja-transparencia .titulo {
+            font-size: 8px;
+            font-weight: bold;
+            color: #ffd100;
+            line-height: 1.2;
+        }
+
+        .caja-transparencia .texto {
+            font-size: 8px;
+            line-height: 1.25;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        .caja-transparencia .texto strong {
+            color: white;
+        }
+
+
+        /* =========================================================
+           COLUMNAS CENTRALES FOOTER
+        ========================================================= */
+
+        .columna {
+            padding-left: 0;
+        }
+
+        .titulo-columna {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 22px;
+        }
+
+        .icono-titulo {
+            width: 25px;
+            height: 25px;
+            min-width: 25px;
+            border-radius: 7px;
+            background-color: #f58220;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 9px;
+        }
+
+        .titulo-columna span {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #004b6b;
+            white-space: nowrap;
+        }
+
+        .titulo-columna .linea-titulo {
+            height: 1px;
+            background-color: #c5d1d6;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .lista {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 2px;
+        }
+
+        .lista li {
+            position: relative;
+            padding-left: 13px;
+            margin-bottom: 7px;
+            font-size: 9px;
+            line-height: 1.35;
+        }
+
+        .lista li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #f58220;
+        }
+
+        .lista li a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        .lista li a:hover {
+            color: #f58220;
+        }
+
+
+        /* =========================================================
+           CONTACTO
+        ========================================================= */
+
+        .columna-contacto {
+            border-left: 1px solid #ccd4d7;
+            padding-left: 20px;
+        }
+
+        .caja-contacto {
+            width: 100%;
+            min-height: 48px;
+            background-color: white;
+            border: 1px solid #d8e1e5;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            padding: 10px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icono-contacto {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            background-color: #ff8a3d;
+            color: white;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .texto-contacto {
+            font-size: 8px;
+            line-height: 1.45;
+        }
+
+        .texto-contacto strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .enlace-contacto {
+            display: block;
+            color: #f58220;
+            font-size: 8px;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .enlace-contacto:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           REDES SOCIALES
+        ========================================================= */
+
+        .titulo-redes {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .titulo-redes .icono-redes {
+            width: 25px;
+            height: 25px;
+            border-radius: 7px;
+            background-color: #f58220;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 9px;
+        }
+
+        .titulo-redes span {
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #004b6b;
+        }
+
+        .titulo-redes .linea-redes {
+            flex: 1;
+            height: 1px;
+            background-color: #c5d1d6;
+            margin-left: 10px;
+        }
+
+        .redes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .red-social {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #004b6b;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .red-social:hover {
+            background-color: #f58220;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           PARTE INFERIOR DEL FOOTER
+        ========================================================= */
+
+        .footer-inferior {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+        }
+
+
+        /* =========================================================
+           FRANJA CERTIFICACIONES
+        ========================================================= */
+
+        .franja-certificaciones {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            border-bottom: 3px solid #f58220;
+            overflow: hidden;
+        }
+
+        .franja-certificaciones img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+
+        /* =========================================================
+           NUEVA FRANJA INSTITUCIONAL INFERIOR
+        ========================================================= */
+
+        .footer-institucional {
+            width: 100%;
+            background: #00415d;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 20px 22px 20px;
+            border-top: 1px solid #f58220;
+        }
+
+        /* Las tres líneas superiores */
+
+        .lineas-institucionales {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 13px;
+        }
+
+        .lineas-institucionales span {
+            display: block;
+            width: 24px;
+            height: 4px;
+            border-radius: 1px;
+        }
+
+        .linea-amarilla {
+            background: #f5c400;
+        }
+
+        .linea-naranja {
+            background: #f58220;
+        }
+
+
+        /* Texto principal */
+
+        .institucional-titulo {
+            margin: 0 0 5px 0;
+            font-size: 10px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .institucional-subtitulo {
+            margin: 0 0 12px 0;
+            font-size: 8px;
+            color: #ffffff;
+        }
+
+
+        /* =========================================================
+           BOTÓN HORA LEGAL
+        ========================================================= */
+
+        .boton-hora {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            padding: 5px 15px;
+
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+
+            background: transparent;
+            color: #9ed7e9;
+
+            font-size: 8px;
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .boton-hora:hover {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.45);
+        }
+
+        .icono-hora {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #83c6dc;
+            display: inline-block;
+        }
+
+
+        /* =========================================================
+           BOTÓN IR ARRIBA
+        ========================================================= */
+
+        .ir-arriba {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+
+            width: 42px;
+            height: 42px;
+
+            background: #004669;
+            color: #ffffff;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            cursor: pointer;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+            z-index: 1000;
+        }
+
+        .ir-arriba:hover {
+            background: #f47920;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media screen and (max-width: 900px) {
+
+            .top-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .top-links {
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-contenedor {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 30px;
+            }
+
+            .columna-contacto {
+                border-left: none;
+                border-top: 1px solid #ccd4d7;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+
+            .hero {
+                height: 360px;
+            }
+
+            .hero-text {
+                left: 10%;
+                right: 10%;
+                bottom: 45px;
+            }
+
+        }
+
+
+        @media screen and (max-width: 700px) {
+
+            .fila {
+                display: block;
+            }
+
+            .columna-izquierda,
+            .columna-derecha {
+                width: 100%;
+                padding: 0;
+            }
+
+            .columna-derecha {
+                margin-top: 25px;
+            }
+
+            .etiqueta {
+                text-align: left;
+                margin-top: 0;
+                margin-bottom: 20px;
+                padding: 0;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero-text {
+                left: 5%;
+                right: 5%;
+                bottom: 35px;
+            }
+
+            .hero-text h1 {
+                font-size: 22px;
+            }
+
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .top-links {
+                font-size: 12px;
+            }
+
+            .menu a {
+                font-size: 13px;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .hero-text h1 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .footer-contenedor {
+                grid-template-columns: 1fr;
+                max-width: calc(100% - 30px);
+            }
+
+            .documento-body {
+                padding: 10px;
+            }
+
+            .logo-tienda {
+                margin-left: 0;
+            }
+
+            .institucional-titulo {
+                font-size: 9px;
+            }
+
+        }
+
+/* =========================================================
+   MENÚ SUPERIOR - ESCUELAS ACADÉMICAS
+   BLOQUE NUEVO
+========================================================= */
+
+.unad-menu-header {
+    width: 100%;
+    height: 60px;
+
+    background: #005274;
+
+    color: #ffffff;
+
+    position: relative;
+
+    z-index: 900;
+}
+
+
+.unad-menu-header-inner {
+    width: 100%;
+    height: 60px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.unad-menu-titulo {
+
+    color: #ffffff;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+
+    line-height: 60px;
+
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/* =========================================================
+   BOTÓN TRES RAYAS
+========================================================= */
+
+.unad-menu-boton {
+
+    position: absolute;
+
+    right: 7%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+
+    padding: 7px;
+
+    margin: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    z-index: 1001;
+
+}
+
+
+.unad-menu-boton span {
+
+    display: block;
+
+    width: 27px;
+
+    height: 4px;
+
+    background: #f5c400;
+
+    border-radius: 0;
+
+    transition:
+        background 0.2s ease;
+
+}
+
+
+.unad-menu-boton:hover span {
+
+    background: #ffd400;
+
+}
+
+
+
+/* =========================================================
+   FONDO CUANDO EL MENÚ ESTÁ ABIERTO
+========================================================= */
+
+.unad-menu-overlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background:
+        rgba(0, 0, 0, 0.18);
+
+    display: none;
+
+    z-index: 1998;
+
+}
+
+
+.unad-menu-overlay.activo {
+
+    display: block;
+
+}
+
+
+
+/* =========================================================
+   MENÚ LATERAL
+========================================================= */
+
+.unad-menu-lateral {
+
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 322px;
+
+    max-width: 85vw;
+
+    height: 100vh;
+
+    background: #ffffff;
+
+    z-index: 2000;
+
+    box-shadow:
+        -2px 0 6px
+        rgba(0, 0, 0, 0.15);
+
+    overflow-y: auto;
+
+    transform:
+        translateX(100%);
+
+    transition:
+        transform 0.25s ease;
+
+}
+
+
+.unad-menu-lateral.activo {
+
+    transform:
+        translateX(0);
+
+}
+
+
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.unad-menu-cerrar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin: 10px 0 34px 10px;
+
+    padding: 7px 12px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+    background: #e5e5e5;
+
+    color: #337ab7;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    cursor: pointer;
+
+}
+
+
+.unad-menu-cerrar:hover {
+
+    background: #d8d8d8;
+
+    color: #286090;
+
+}
+
+
+.unad-menu-x {
+
+    font-size: 29px;
+
+    line-height: 18px;
+
+    font-weight: 500;
+
+}
+
+
+
+/* =========================================================
+   LISTA DEL MENÚ
+========================================================= */
+
+.unad-menu-lista {
+
+    width: 100%;
+
+    padding:
+        0 18px 30px 28px;
+
+}
+
+
+.unad-menu-item {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+/* =========================================================
+   OPCIÓN PRINCIPAL
+========================================================= */
+
+.unad-menu-item > button {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0;
+
+    margin: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #004669;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+.unad-menu-item > button:hover {
+
+    color: #f47920;
+
+}
+
+
+.unad-menu-item > button span {
+
+    flex: 1;
+
+}
+
+
+.unad-menu-item > button strong {
+
+    width: 25px;
+
+    text-align: center;
+
+    color: #f47920;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+}
+
+
+
+/* =========================================================
+   SUBMENÚ
+========================================================= */
+
+.unad-submenu {
+
+    display: none;
+
+    padding:
+        0 0 5px 12px;
+
+}
+
+
+.unad-submenu.abierto {
+
+    display: block;
+
+}
+
+
+.unad-submenu a {
+
+    display: block;
+
+    padding:
+        7px 0;
+
+    color: #555555;
+
+    font-size: 13px;
+
+}
+
+
+.unad-submenu a:hover {
+
+    color: #f47920;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media screen and (max-width: 700px) {
+
+    .unad-menu-header {
+
+        height: 60px;
+
+    }
+
+
+    .unad-menu-header-inner {
+
+        height: 60px;
+
+    }
+
+
+    .unad-menu-titulo {
+
+        font-size: 13px;
+
+    }
+
+
+    .unad-menu-boton {
+
+        right: 10px;
+
+    }
+
+
+    .unad-menu-lateral {
+
+        width: 322px;
+
+        max-width: 88vw;
+
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .unad-menu-lateral {
+
+        width: 300px;
+
+        max-width: 90vw;
+
+    }
+
+}
+/* =========================================================
+   BOTÓN MENÚ SVG - LADO IZQUIERDO
+========================================================= */
+
+.boton-menu-svg {
+
+    position: absolute;
+
+   Left: 25px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 65px;
+    height: 65px;
+
+    padding: 0;
+
+    margin: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 3000;
+}
+
+
+/* Imagen menu.svg */
+
+.boton-menu-svg img {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.boton-menu-svg:hover {
+
+    transform: translateY(-50%) scale(1.05);
+
+}
+
+
+/* =========================================================
+   IMPORTANTE:
+   PERMITE POSICIONAR EL MENÚ DENTRO DE LA FRANJA AZUL
+========================================================= */
+
+.footer-institucional {
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media screen and (max-width: 700px) {
+
+    .boton-menu-svg {
+
+        right: 15px;
+
+        width: 55px;
+
+        height: 55px;
+
+    }
+
+    .boton-menu-svg img {
+
+        width: 50px;
+
+        height: 50px;
+
+    }
+
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .boton-menu-svg {
+
+        right: 10px;
+
+        width: 48px;
+
+        height: 48px;
+
+    }
+
+    .boton-menu-svg img {
+
+        width: 44px;
+
+        height: 44px;
+
+    }
+
+}
+
+/* =========================================================
+   AGENTES VIRTUALES FLOTANTES
+========================================================= */
+
+.agentes-virtuales {
+    position: fixed;
+
+    right: 18px;
+    bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+
+    z-index: 3000;
+}
+
+
+/* =========================================================
+   CADA AGENTE
+========================================================= */
+
+.agente-virtual {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.agente-virtual img {
+
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0;
+
+    filter:
+        drop-shadow(
+            0 4px 7px
+            rgba(0, 0, 0, 0.25)
+        );
+}
+
+
+/* =========================================================
+   NOMBRE - DEBAJO DE LA IMAGEN
+========================================================= */
+
+.agente-nombre {
+
+    display: block;
+
+    position: relative;
+
+    margin-top: 4px;
+
+    padding: 4px 8px;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 2px 6px
+        rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   EFECTO AL PASAR EL MOUSE
+========================================================= */
+
+.agente-virtual:hover {
+
+    transform: translateY(-4px);
+}
+
+
+.agente-virtual:hover .agente-nombre {
+
+    color: #000000;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   ANIMACIÓN SUAVE
+========================================================= */
+
+.agente-virtual img {
+
+    animation:
+        agenteFlotando
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes agenteFlotando {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   SEGUNDO AGENTE
+========================================================= */
+
+.agente-virtual:nth-child(2) img {
+
+    animation-delay: 1.2s;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .agentes-virtuales {
+
+        right: 12px;
+        bottom: 20px;
+
+        gap: 12px;
+    }
+
+
+    .agente-virtual img {
+
+        width: 80px;
+        height: 80px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    .agentes-virtuales {
+
+        right: 8px;
+        bottom: 15px;
+
+        gap: 8px;
+    }
+
+
+    .agente-virtual img {
+
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .agente-nombre {
+
+        font-size: 8px;
+
+        padding: 3px 6px;
+    }
+
+}
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PARTE SUPERIOR
+========================================================= -->
+
+<section class="top-section">
+
+    <div class="container top-container">
+
+        <div class="logo">
+
+            <img
+                src="logo-unad.png"
+                alt="Logo UNAD">
+
+        </div>
+
+
+        <div class="top-links">
+
+            <a
+                href="https://www.unad.edu.co/directorio-de-unidades"
+                target="_blank">
+
+                <img
+                    src="unidades.png"
+                    alt="Unidades">
+
+                <span>Unidades</span>
+
+            </a>
+
+
+            <span class="separador">|</span>
+
+
+            <a
+                href="https://directorio.unad.edu.co/directorio-global-unad"
+                target="_blank">
+
+                <img
+                    src="directorio.png"
+                    alt="Directorio">
+
+                <span>Directorio</span>
+
+            </a>
+
+
+            <span class="separador">|</span>
+
+
+            <a
+                href="https://directorio.unad.edu.co/sedes-a-nivel-nacional-e-internacional"
+                target="_blank">
+
+                <img
+                    src="centros.png"
+                    alt="Centros">
+
+                <span>Centros</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<!-- =========================================================
+     HEADER - ESCUELAS ACADÉMICAS
+========================================================= -->
+
+<header class="unad-menu-header">
+
+    <div class="unad-menu-header-inner">
+
+        <!-- TÍTULO CENTRADO -->
+
+        <div class="unad-menu-titulo">
+            Escuelas Académicas
+        </div>
+
+
+        <!-- BOTÓN TRES RAYAS -->
+
+        <button
+            type="button"
+            class="unad-menu-boton"
+            onclick="unadAbrirMenu()"
+            aria-label="Abrir menú"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     FONDO OSCURO DEL MENÚ
+========================================================= -->
+
+<div
+    id="unadMenuOverlay"
+    class="unad-menu-overlay"
+    onclick="unadCerrarMenu()">
+</div>
+
+
+<!-- =========================================================
+     MENÚ LATERAL
+========================================================= -->
+
+<aside
+    id="unadMenuLateral"
+    class="unad-menu-lateral"
+    aria-hidden="true">
+
+
+    <!-- =====================================================
+         BOTÓN CERRAR
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="unad-menu-cerrar"
+        onclick="unadCerrarMenu()">
+
+        <span class="unad-menu-x">×</span>
+
+        <span>
+            Cerrar Menu
+        </span>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         OPCIONES DEL MENÚ
+    ====================================================== -->
+
+    <div class="unad-menu-lista">
+
+
+        <!-- ESTUDIA EN LA UNAD -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Estudia en la UNAD
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Oferta académica
+                </a>
+
+                <a href="#">
+                    Inscripciones
+                </a>
+
+                <a href="#">
+                    Matrículas
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROGRAMAS Y ESCUELAS -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Programas y Escuelas
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Programas académicos
+                </a>
+
+                <a href="#">
+                    Escuelas académicas
+                </a>
+
+                <a href="#">
+                    Oferta de programas
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VIDA ACADÉMICA -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Vida Académica
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Calendario académico
+                </a>
+
+                <a href="#">
+                    Servicios académicos
+                </a>
+
+                <a href="#">
+                    Bienestar universitario
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CENTROS -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Centros
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Centros UNAD
+                </a>
+
+                <a href="#">
+                    Sedes
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ATENCIÓN AL CIUDADANO -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Atención al ciudadano
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Atención al usuario
+                </a>
+
+                <a href="#">
+                    PQRRSF
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CORREO -->
+
+        <div class="unad-menu-item">
+
+            <button
+                type="button"
+                onclick="unadAlternarSubmenu(this)">
+
+                <span>
+                    Correo
+                </span>
+
+                <strong>
+                    +
+                </strong>
+
+            </button>
+
+
+            <div class="unad-submenu">
+
+                <a href="#">
+                    Correo institucional
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MIGAS
+========================================================= -->
+
+<section class="breadcrumb-section">
+
+    <div class="container">
+
+        <ol class="breadcrumb">
+
+            <li>
+                <a href="https://academia.unad.edu.co/">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="https://estudios.unad.edu.co/carreras">
+                    Pregrado y posgrado
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Próximos a graduarse
+                </a>
+            </li>
+
+            <li>
+                Diploma Electrónico
+            </li>
+
+        </ol>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-image-wrapper">
+
+        <img
+            class="hero-image"
+            src="grados.jpg"
+            alt="Diploma Electrónico">
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+
+    <div class="hero-text">
+
+        <h1>
+            Diploma Electrónico
+        </h1>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTENIDO PRINCIPAL
+========================================================= -->
+
+<main class="main">
+
+    <div class="container">
+
+        <div class="content">
+
+
+            <h2 class="section-title">
+                Diploma Electrónico
+            </h2>
+
+
+            <div class="description">
+
+                <p>
+
+                    A continuación puede consultar y descargar
+                    su título electrónico, así como verificar la
+                    validez del mismo, digitando el Código Seguro
+                    de Verificación CSV que le fue remitido a su
+                    correo electrónico. Tenga en cuenta que este
+                    servicio aplica para los graduados en
+                    diciembre de 2016 en adelante.
+
+                </p>
+
+
+                <p>
+
+                    Si tiene alguna inquietud o aún no ha recibido
+                    en su correo electrónico la comunicación de la
+                    UNAD con el Código Seguro de Verificación CSV,
+                    puede remitirnos un correo electrónico con sus
+                    datos personales a
+
+                    <a
+                        href="mailto:grados@unad.edu.co"
+                        class="correo">
+
+                        grados@unad.edu.co
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORMULARIO
+            ================================================== -->
+
+            <div class="consulta-local">
+
+
+                <div class="titulo-consulta">
+
+                    Comprobación de documento electrónico
+
+                </div>
+
+
+                <div class="fila">
+
+
+                    <!-- COLUMNA IZQUIERDA -->
+
+                    <div class="columna-izquierda">
+
+
+                        <!-- CSV -->
+
+                        <input
+                            type="text"
+                            id="codigoCSV"
+                            class="campo"
+                            placeholder="Código Seguro de Verificación"
+                            autocomplete="off">
+
+
+                        <div class="descripcion-csv">
+
+                            Introduzca el Código Seguro de
+                            Verificación (CSV) del documento que
+                            desea validar. Este código se compone
+                            de 16 caracteres e incluye mayúsculas,
+                            minúsculas y números.
+
+                            <br>
+
+                            Asegúrese de que introduce el código
+                            teniendo en cuenta estas indicaciones.
+
+                        </div>
+
+
+
+                        <!-- CAPTCHA -->
+
+                        <input
+                            type="text"
+                            id="captchaUsuario"
+                            class="campo"
+                            placeholder="Caracteres de control"
+                            autocomplete="off">
+
+
+                        <div class="captcha-texto">
+
+                            Introduzca los caracteres de control
+                            que ve en la siguiente imagen.
+
+                        </div>
+
+
+                        <canvas
+                            id="captchaCanvas"
+                            width="105"
+                            height="45">
+                        </canvas>
+
+
+                        <button
+                            type="button"
+                            class="recargar"
+                            onclick="generarCaptcha()"
+                            title="Generar nuevo código">
+
+                            ↻
+
+                        </button>
+
+
+                        <div
+                            id="mensajeCaptcha"
+                            class="mensaje-captcha">
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- COLUMNA DERECHA -->
+
+                    <div class="columna-derecha">
+
+
+                        <div class="etiqueta">
+
+                            CSV:
+
+                        </div>
+
+
+                        <div
+                            class="etiqueta"
+                            style="margin-bottom: 0;">
+
+                            Captcha:
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BOTÓN
+                ================================================== -->
+
+                <div class="boton-contenedor">
+
+
+                    <button
+                        type="button"
+                        class="boton-comprobacion"
+                        onclick="realizarComprobacion()">
+
+                        Realizar comprobación
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- RESULTADO -->
+
+                <div
+                    id="resultado"
+                    class="resultado">
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     IMAGEN TIENDA VIRTUAL
+========================================================= -->
+
+
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer-unad">
+
+
+    <div class="footer-contenedor">
+
+
+        <!-- =====================================================
+             COLUMNA 1
+        ====================================================== -->
+
+        <div class="columna-izquierda">
+
+
+            <img
+                src="tienda.png"
+                alt="Tienda Virtual UNADISTA"
+                class="logo-tienda">
+
+
+            <div class="linea-gris"></div>
+
+
+            <ul class="lista-izquierda">
+
+
+                <li>
+                    <a href="#">
+                        Ir al Mapa del sitio
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Listado de Unidades
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Directorio de Funcionarios
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Canales físicos y electrónicos
+                        para atención al público
+                    </a>
+                </li>
+
+
+            </ul>
+
+
+
+            <div class="caja-transparencia">
+
+
+                <div class="titulo">
+
+                    Programa de Transparencia y
+                    <br>
+                    Ética Pública
+
+                </div>
+
+
+                <div class="texto">
+
+                    ☎ Línea anticorrupción:
+                    <strong>
+                        3232641617
+                    </strong>
+
+                    ✉ anticorrupcion@unad.edu.co
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             ENLACES DE INTERÉS
+        ====================================================== -->
+
+        <div class="columna">
+
+
+            <div class="titulo-columna">
+
+
+                <div class="icono-titulo">
+                    🔗
+                </div>
+
+
+                <span>
+                    ENLACES DE INTERÉS
+                </span>
+
+
+                <div class="linea-titulo"></div>
+
+
+            </div>
+
+
+            <ul class="lista">
+
+
+                <li>
+                    <a href="#">
+                        Acerca de la UNAD
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        h-Biblioteca
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Financiación de Programas
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Internacionalización
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Simulador de Matrícula
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Sistema de Atención Integral
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Investigación
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Portal de Eventos
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Sello Editorial
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Consejería Académica
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Grados
+                    </a>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             NORMATIVIDAD
+        ====================================================== -->
+
+        <div class="columna">
+
+
+            <div class="titulo-columna">
+
+
+                <div class="icono-titulo">
+                    ▣
+                </div>
+
+
+                <span>
+                    NORMATIVIDAD
+                </span>
+
+
+                <div class="linea-titulo"></div>
+
+
+            </div>
+
+
+            <ul class="lista">
+
+
+                <li>
+                    <a href="#">
+                        Contratación
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Normatividad y Políticas
+                        Institucionales
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Política de Cookies
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Política de Privacidad
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Política de Tratamiento
+                        de Datos Personales
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Política de privacidad y
+                        condiciones de uso de la
+                        App Conecta
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Política de Derechos de Autor
+                        y Autorización de Uso de
+                        Contenidos
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Programa de Transparencia
+                        y Ética Pública
+                    </a>
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Transparencia e Información Pública
+                    </strong>
+
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Términos y Condiciones
+                        del Sitio Web
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#">
+                        Sistema PQRRSF
+                    </a>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+
+
+
+        <!-- =====================================================
+             DATOS DE CONTACTO
+        ====================================================== -->
+
+        <div class="columna-contacto">
+
+
+            <div class="titulo-columna">
+
+
+                <div class="icono-titulo">
+                    ☎
+                </div>
+
+
+                <span>
+                    DATOS DE CONTACTO
+                </span>
+
+
+                <div class="linea-titulo"></div>
+
+
+            </div>
+
+
+
+            <div class="caja-contacto">
+
+
+                <div class="icono-contacto">
+                    ☎
+                </div>
+
+
+                <div class="texto-contacto">
+
+                    <strong>
+                        Teléfono: 3232641617
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="caja-contacto">
+
+
+                <div class="icono-contacto">
+                    📍
+                </div>
+
+
+                <div class="texto-contacto">
+
+                    <strong>
+                        Sede Principal
+                    </strong>
+
+                    Calle 14 Sur # 14 - 31
+                    <br>
+
+                    Barrio Restrepo,
+                    Bogotá - Colombia.
+
+                </div>
+
+
+            </div>
+
+
+
+            <a
+                href="mailto:atencionalusuario@unad.edu.co"
+                class="enlace-contacto">
+
+                ✉ Atención al usuario
+
+            </a>
+
+
+
+            <a
+                href="#"
+                class="enlace-contacto">
+
+                ✉ Buzón de notificaciones judiciales
+
+            </a>
+
+
+
+            <!-- REDES -->
+
+            <div class="titulo-redes">
+
+
+                <div class="icono-redes">
+                    ↗
+                </div>
+
+
+                <span>
+                    SÍGUENOS EN
+                </span>
+
+
+                <div class="linea-redes"></div>
+
+
+            </div>
+
+
+
+            <div class="redes">
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="Facebook">
+
+                    f
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="X">
+
+                    X
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="YouTube">
+
+                    ▶
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="Instagram">
+
+                    ◎
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="LinkedIn">
+
+                    in
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="red-social"
+                    title="TikTok">
+
+                    ♪
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         COPYRIGHT
+    ====================================================== -->
+
+    <div class="footer-inferior">
+
+        © UNAD - Universidad Nacional Abierta y a Distancia
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================================================
+     FRANJA CERTIFICACIONES
+========================================================= -->
+
+<section class="franja-certificaciones">
+
+    <img
+        src="certificaciones.png"
+        alt="Certificaciones institucionales">
+
+</section>
+
+
+<!-- =========================================================
+     FRANJA AZUL INSTITUCIONAL
+========================================================= -->
+
+<footer class="footer-institucional">
+
+    <!-- =====================================================
+         BOTÓN MENÚ
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="boton-menu-svg"
+        onclick="unadAbrirMenu()"
+        aria-label="Abrir menú">
+
+        <img
+            src="menu.svg"
+            alt="Menú">
+
+    </button>
+
+
+    <!-- Líneas amarillas y naranjas -->
+
+    <div class="lineas-institucionales">
+
+        <span class="linea-amarilla"></span>
+        <span class="linea-naranja"></span>
+        <span class="linea-amarilla"></span>
+
+    </div>
+
+
+    <!-- Texto -->
+
+    <p class="institucional-titulo">
+
+        Universidad Nacional Abierta y a Distancia UNAD de Colombia
+        — © Copyright UNAD 2026
+
+    </p>
+
+
+    <p class="institucional-subtitulo">
+
+        Institución de Educación Superior sujeta a Inspección y Vigilancia
+        por el Ministerio de Educación Nacional
+
+    </p>
+
+
+    <!-- Botón hora legal -->
+
+    <a
+        href="#"
+        class="boton-hora">
+
+        <span class="icono-hora"></span>
+
+        Consulta la Hora Legal de Colombia aquí
+
+    </a>
+
+</footer>
+
+
+
+
+<!-- =========================================================
+     BOTÓN IR ARRIBA
+========================================================= -->
+
+<div
+    class="ir-arriba"
+    onclick="window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })">
+
+    ↑
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT - CAPTCHA
+========================================================= -->
+
+<script>
+
+    let codigoCaptcha = "";
+
+
+    /* =========================================================
+       GENERAR CAPTCHA
+    ========================================================= */
+
+    function generarCaptcha() {
+
+
+        const caracteres =
+            "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+        codigoCaptcha = "";
+
+
+        for (let i = 0; i < 6; i++) {
+
+
+            const posicion =
+                Math.floor(
+                    Math.random() *
+                    caracteres.length
+                );
+
+
+            codigoCaptcha +=
+                caracteres.charAt(posicion);
+
+        }
+
+
+        dibujarCaptcha();
+
+
+        document.getElementById(
+            "captchaUsuario"
+        ).value = "";
+
+
+        const mensaje =
+            document.getElementById(
+                "mensajeCaptcha"
+            );
+
+
+        mensaje.style.display = "none";
+
+        mensaje.textContent = "";
+
+    }
+
+
+
+    /* =========================================================
+       DIBUJAR CAPTCHA
+    ========================================================= */
+
+    function dibujarCaptcha() {
+
+
+        const canvas =
+            document.getElementById(
+                "captchaCanvas"
+            );
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        /* Fondo */
+
+        ctx.fillStyle = "#eeeeee";
+
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+
+        /* Ruido */
+
+        for (let i = 0; i < 100; i++) {
+
+
+            const x =
+                Math.random() *
+                canvas.width;
+
+
+            const y =
+                Math.random() *
+                canvas.height;
+
+
+            ctx.fillStyle =
+                "rgba(0,0,0," +
+                (Math.random() * 0.45) +
+                ")";
+
+
+            ctx.fillRect(
+                x,
+                y,
+                1,
+                1
+            );
+
+        }
+
+
+
+        /* Líneas */
+
+        for (let i = 0; i < 4; i++) {
+
+
+            ctx.beginPath();
+
+
+            ctx.moveTo(
+                Math.random() *
+                canvas.width,
+
+                Math.random() *
+                canvas.height
+            );
+
+
+            ctx.lineTo(
+                Math.random() *
+                canvas.width,
+
+                Math.random() *
+                canvas.height
+            );
+
+
+            ctx.strokeStyle =
+                "rgba(0,0,0,0.45)";
+
+
+            ctx.lineWidth = 1;
+
+
+            ctx.stroke();
+
+        }
+
+
+
+        /* Código */
+
+        ctx.textAlign = "center";
+
+        ctx.textBaseline = "middle";
+
+        ctx.font = "bold 24px Arial";
+
+
+        const espacio =
+            canvas.width /
+            (codigoCaptcha.length + 1);
+
+
+
+        for (
+            let i = 0;
+            i < codigoCaptcha.length;
+            i++
+        ) {
+
+
+            const letra =
+                codigoCaptcha.charAt(i);
+
+
+            const x =
+                espacio * (i + 1);
+
+
+            const y =
+                canvas.height / 2;
+
+
+            const angulo =
+                (Math.random() - 0.5) *
+                0.5;
+
+
+            ctx.save();
+
+
+            ctx.translate(
+                x,
+                y
+            );
+
+
+            ctx.rotate(
+                angulo
+            );
+
+
+            ctx.fillStyle =
+                "#222222";
+
+
+            ctx.fillText(
+                letra,
+                0,
+                0
+            );
+
+
+            ctx.restore();
+
+        }
+
+    }
+
+
+
+    /* =========================================================
+       VALIDAR CAPTCHA
+    ========================================================= */
+
+    function validarCaptcha() {
+
+
+        const respuesta =
+            document
+                .getElementById(
+                    "captchaUsuario"
+                )
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        return respuesta === codigoCaptcha;
+
+    }
+
+
+
+    /* =========================================================
+       REALIZAR COMPROBACIÓN
+    ========================================================= */
+
+    function realizarComprobacion() {
+
+
+        const mensaje =
+            document.getElementById(
+                "mensajeCaptcha"
+            );
+
+
+        const resultado =
+            document.getElementById(
+                "resultado"
+            );
+
+
+        if (!validarCaptcha()) {
+
+
+            mensaje.style.display =
+                "block";
+
+
+            mensaje.style.color =
+                "#a94442";
+
+
+            mensaje.textContent =
+                "El código de verificación no es correcto.";
+
+
+            generarCaptcha();
+
+
+            return;
+
+        }
+
+
+
+        mensaje.style.display =
+            "block";
+
+
+        mensaje.style.color =
+            "#3c763d";
+
+
+        mensaje.textContent =
+            "Código de verificación correcto.";
+
+
+
+        resultado.style.display =
+            "block";
+
+
+        resultado.innerHTML =
+            "<strong>Comprobación realizada.</strong><br>" +
+            "El código de verificación ingresado es correcto.";
+
+
+        resultado.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+
+
+
+    /* =========================================================
+       INICIAR CAPTCHA
+    ========================================================= */
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            generarCaptcha();
+
+        }
+    );
+
+</script>
+
+<!-- =========================================================
+     AGENTES VIRTUALES FLOTANTES
+========================================================= -->
+
+<div class="agentes-virtuales">
+
+
+    <!-- AGENTE SERVICIOS EN LÍNEA -->
+
+    <a
+        href="#"
+        class="agente-virtual"
+        title="Servicios en línea">
+
+        <!-- IMAGEN ARRIBA -->
+        <img
+            src="invoice-dollar-done-svgrepo-com_4.png"
+            alt="Servicios en línea">
+
+        <!-- NOMBRE ABAJO -->
+        <span class="agente-nombre">
+            Servicios en línea
+        </span>
+
+    </a>
+
+
+    <!-- AGENTE TE ASESORAMOS -->
+
+    <a
+        href="#"
+        class="agente-virtual"
+        title="Te asesoramos">
+
+        <!-- IMAGEN ARRIBA -->
+        <img
+            src="helpdesk_17652904_Zb6Xc5r.png"
+            alt="Te asesoramos">
+
+        <!-- NOMBRE ABAJO -->
+        <span class="agente-nombre">
+            Te asesoramos
+        </span>
+
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
