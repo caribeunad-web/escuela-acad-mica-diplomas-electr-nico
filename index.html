@@ -1883,6 +1883,120 @@
     }
 
 }
+
+/* =========================================================
+   ACTA DE GRADO - RESULTADO DE LA CONSULTA
+========================================================= */
+
+.resultado-acta {
+    display: none;
+    width: 100%;
+    margin-top: 25px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-top: 4px solid #f47920;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.resultado-acta h3 {
+    margin: 0 0 10px 0;
+    color: #004669;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.resultado-acta p {
+    margin: 5px 0 20px 0;
+    color: #555555;
+    font-size: 14px;
+}
+
+.acta-visor {
+    width: 100%;
+    height: 700px;
+    border: 1px solid #cccccc;
+    background: #f5f5f5;
+    margin-top: 20px;
+}
+
+.botones-acta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.boton-acta {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 4px;
+    border: 1px solid #2e6da4;
+    background: #337ab7;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.boton-acta:hover {
+    background: #286090;
+    border-color: #204d74;
+    color: #ffffff;
+}
+
+.boton-descargar {
+    background: #004669;
+    border-color: #003550;
+}
+
+.boton-descargar:hover {
+    background: #003550;
+}
+
+.error-consulta {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: #f2dede;
+    border: 1px solid #ebcccc;
+    border-radius: 4px;
+    color: #a94442;
+    font-size: 14px;
+    text-align: center;
+}
+
+.exito-consulta {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: #dff0d8;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    color: #3c763d;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+
+    .resultado-acta {
+        padding: 15px;
+    }
+
+    .acta-visor {
+        height: 550px;
+    }
+
+    .boton-acta {
+        width: 100%;
+    }
+
+}
     </style>
 
 </head>
@@ -3203,352 +3317,692 @@
 
 <script>
 
-    let codigoCaptcha = "";
+/* =========================================================
+   CONFIGURACIÓN DE LA CONSULTA
+========================================================= */
 
+/*
+   IMPORTANTE:
 
-    /* =========================================================
-       GENERAR CAPTCHA
-    ========================================================= */
+   Este es el código CSV autorizado.
 
-    function generarCaptcha() {
+   El código que proporcionaste:
+   fPYuqVlxSHAb7KxL
 
+   tiene 16 caracteres.
+*/
 
-        const caracteres =
-            "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const DATOS_ACTA = {
 
+    "fPYuqVlxSHAb7KxL": {
 
-        codigoCaptcha = "";
+        nombre: "Acta de Grado",
 
-
-        for (let i = 0; i < 6; i++) {
-
-
-            const posicion =
-                Math.floor(
-                    Math.random() *
-                    caracteres.length
-                );
-
-
-            codigoCaptcha +=
-                caracteres.charAt(posicion);
-
-        }
-
-
-        dibujarCaptcha();
-
-
-        document.getElementById(
-            "captchaUsuario"
-        ).value = "";
-
-
-        const mensaje =
-            document.getElementById(
-                "mensajeCaptcha"
-            );
-
-
-        mensaje.style.display = "none";
-
-        mensaje.textContent = "";
+        archivo: "fPYuqVlxSHAb7KxL.pdf"
 
     }
 
+};
 
 
-    /* =========================================================
-       DIBUJAR CAPTCHA
-    ========================================================= */
+/* =========================================================
+   CAPTCHA
+========================================================= */
 
-    function dibujarCaptcha() {
+let codigoCaptcha = "";
 
 
-        const canvas =
-            document.getElementById(
-                "captchaCanvas"
+/* =========================================================
+   GENERAR CAPTCHA
+========================================================= */
+
+function generarCaptcha() {
+
+    const caracteres =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    codigoCaptcha = "";
+
+    for (let i = 0; i < 6; i++) {
+
+        const posicion =
+            Math.floor(
+                Math.random() *
+                caracteres.length
             );
 
+        codigoCaptcha +=
+            caracteres.charAt(posicion);
 
-        const ctx =
-            canvas.getContext("2d");
+    }
+
+    dibujarCaptcha();
 
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
+    document.getElementById(
+        "captchaUsuario"
+    ).value = "";
+
+
+    const mensaje =
+        document.getElementById(
+            "mensajeCaptcha"
         );
 
+    mensaje.style.display = "none";
+    mensaje.textContent = "";
 
-        /* Fondo */
 
-        ctx.fillStyle = "#eeeeee";
+    /*
+       Ocultar nuevamente el resultado
+       cuando se genera un CAPTCHA nuevo.
+    */
 
+    ocultarResultado();
+
+}
+
+
+/* =========================================================
+   DIBUJAR CAPTCHA
+========================================================= */
+
+function dibujarCaptcha() {
+
+    const canvas =
+        document.getElementById(
+            "captchaCanvas"
+        );
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* Fondo */
+
+    ctx.fillStyle = "#eeeeee";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* Ruido */
+
+    for (let i = 0; i < 100; i++) {
+
+        const x =
+            Math.random() *
+            canvas.width;
+
+        const y =
+            Math.random() *
+            canvas.height;
+
+        ctx.fillStyle =
+            "rgba(0,0,0," +
+            (Math.random() * 0.45) +
+            ")";
 
         ctx.fillRect(
-            0,
-            0,
+            x,
+            y,
+            1,
+            1
+        );
+
+    }
+
+
+    /* Líneas */
+
+    for (let i = 0; i < 4; i++) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            Math.random() *
             canvas.width,
+
+            Math.random() *
             canvas.height
         );
 
+        ctx.lineTo(
+            Math.random() *
+            canvas.width,
 
+            Math.random() *
+            canvas.height
+        );
 
-        /* Ruido */
+        ctx.strokeStyle =
+            "rgba(0,0,0,0.45)";
 
-        for (let i = 0; i < 100; i++) {
+        ctx.lineWidth = 1;
 
-
-            const x =
-                Math.random() *
-                canvas.width;
-
-
-            const y =
-                Math.random() *
-                canvas.height;
-
-
-            ctx.fillStyle =
-                "rgba(0,0,0," +
-                (Math.random() * 0.45) +
-                ")";
-
-
-            ctx.fillRect(
-                x,
-                y,
-                1,
-                1
-            );
-
-        }
-
-
-
-        /* Líneas */
-
-        for (let i = 0; i < 4; i++) {
-
-
-            ctx.beginPath();
-
-
-            ctx.moveTo(
-                Math.random() *
-                canvas.width,
-
-                Math.random() *
-                canvas.height
-            );
-
-
-            ctx.lineTo(
-                Math.random() *
-                canvas.width,
-
-                Math.random() *
-                canvas.height
-            );
-
-
-            ctx.strokeStyle =
-                "rgba(0,0,0,0.45)";
-
-
-            ctx.lineWidth = 1;
-
-
-            ctx.stroke();
-
-        }
-
-
-
-        /* Código */
-
-        ctx.textAlign = "center";
-
-        ctx.textBaseline = "middle";
-
-        ctx.font = "bold 24px Arial";
-
-
-        const espacio =
-            canvas.width /
-            (codigoCaptcha.length + 1);
-
-
-
-        for (
-            let i = 0;
-            i < codigoCaptcha.length;
-            i++
-        ) {
-
-
-            const letra =
-                codigoCaptcha.charAt(i);
-
-
-            const x =
-                espacio * (i + 1);
-
-
-            const y =
-                canvas.height / 2;
-
-
-            const angulo =
-                (Math.random() - 0.5) *
-                0.5;
-
-
-            ctx.save();
-
-
-            ctx.translate(
-                x,
-                y
-            );
-
-
-            ctx.rotate(
-                angulo
-            );
-
-
-            ctx.fillStyle =
-                "#222222";
-
-
-            ctx.fillText(
-                letra,
-                0,
-                0
-            );
-
-
-            ctx.restore();
-
-        }
+        ctx.stroke();
 
     }
 
 
+    /* Código */
 
-    /* =========================================================
-       VALIDAR CAPTCHA
-    ========================================================= */
+    ctx.textAlign = "center";
 
-    function validarCaptcha() {
+    ctx.textBaseline = "middle";
 
-
-        const respuesta =
-            document
-                .getElementById(
-                    "captchaUsuario"
-                )
-                .value
-                .trim()
-                .toUpperCase();
+    ctx.font = "bold 24px Arial";
 
 
-        return respuesta === codigoCaptcha;
+    const espacio =
+        canvas.width /
+        (codigoCaptcha.length + 1);
+
+
+    for (
+        let i = 0;
+        i < codigoCaptcha.length;
+        i++
+    ) {
+
+        const letra =
+            codigoCaptcha.charAt(i);
+
+        const x =
+            espacio * (i + 1);
+
+        const y =
+            canvas.height / 2;
+
+        const angulo =
+            (Math.random() - 0.5) *
+            0.5;
+
+
+        ctx.save();
+
+
+        ctx.translate(
+            x,
+            y
+        );
+
+
+        ctx.rotate(
+            angulo
+        );
+
+
+        ctx.fillStyle =
+            "#222222";
+
+
+        ctx.fillText(
+            letra,
+            0,
+            0
+        );
+
+
+        ctx.restore();
+
+    }
+
+}
+
+
+/* =========================================================
+   VALIDAR CAPTCHA
+========================================================= */
+
+function validarCaptcha() {
+
+    const respuesta =
+        document
+            .getElementById(
+                "captchaUsuario"
+            )
+            .value
+            .trim()
+            .toUpperCase();
+
+
+    return respuesta === codigoCaptcha;
+
+}
+
+
+/* =========================================================
+   VALIDAR CSV
+========================================================= */
+
+function validarCSV() {
+
+    const codigo =
+        document
+            .getElementById(
+                "codigoCSV"
+            )
+            .value
+            .trim();
+
+
+    /*
+       El CSV distingue mayúsculas y minúsculas.
+    */
+
+    return DATOS_ACTA.hasOwnProperty(codigo);
+
+}
+
+
+/* =========================================================
+   OCULTAR RESULTADO
+========================================================= */
+
+function ocultarResultado() {
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    resultado.style.display =
+        "none";
+
+
+    resultado.innerHTML = "";
+
+}
+
+
+/* =========================================================
+   MOSTRAR ACTA
+========================================================= */
+
+function mostrarActa(codigo) {
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    const datos =
+        DATOS_ACTA[codigo];
+
+
+    if (!datos) {
+
+        ocultarResultado();
+
+        return;
 
     }
 
 
+    resultado.innerHTML = `
 
-    /* =========================================================
-       REALIZAR COMPROBACIÓN
-    ========================================================= */
+        <div class="resultado-acta"
+             style="display:block;">
 
-    function realizarComprobacion() {
+            <h3>
+                Acta de grado encontrada
+            </h3>
 
+            <p>
+                La comprobación fue realizada
+                correctamente.
+            </p>
 
-        const mensaje =
-            document.getElementById(
-                "mensajeCaptcha"
-            );
-
-
-        const resultado =
-            document.getElementById(
-                "resultado"
-            );
-
-
-        if (!validarCaptcha()) {
+            <p>
+                El documento electrónico
+                correspondiente al código
+                ingresado se encuentra disponible.
+            </p>
 
 
-            mensaje.style.display =
-                "block";
+            <div class="botones-acta">
+
+                <a
+                    href="${datos.archivo}"
+                    target="_blank"
+                    class="boton-acta">
+
+                    Ver acta de grado
+
+                </a>
 
 
-            mensaje.style.color =
-                "#a94442";
+                <a
+                    href="${datos.archivo}"
+                    download
+                    class="boton-acta boton-descargar">
+
+                    Descargar acta de grado
+
+                </a>
+
+            </div>
 
 
-            mensaje.textContent =
-                "El código de verificación no es correcto.";
+            <iframe
+                src="${datos.archivo}"
+                class="acta-visor"
+                title="Acta de grado">
+
+            </iframe>
+
+        </div>
+
+    `;
 
 
-            generarCaptcha();
+    resultado.style.display =
+        "block";
 
 
-            return;
+    resultado.scrollIntoView({
 
-        }
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+}
 
 
+/* =========================================================
+   REALIZAR COMPROBACIÓN
+========================================================= */
+
+function realizarComprobacion() {
+
+
+    const codigoCSV =
+        document
+            .getElementById(
+                "codigoCSV"
+            )
+            .value
+            .trim();
+
+
+    const mensaje =
+        document.getElementById(
+            "mensajeCaptcha"
+        );
+
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    /*
+       Ocultar resultado anterior.
+    */
+
+    ocultarResultado();
+
+
+    /* =====================================================
+       VALIDAR QUE HAYA CSV
+    ===================================================== */
+
+    if (codigoCSV === "") {
 
         mensaje.style.display =
             "block";
 
-
         mensaje.style.color =
-            "#3c763d";
-
+            "#a94442";
 
         mensaje.textContent =
-            "Código de verificación correcto.";
+            "Debe ingresar el Código Seguro de Verificación.";
 
+        document
+            .getElementById(
+                "codigoCSV"
+            )
+            .focus();
 
-
-        resultado.style.display =
-            "block";
-
-
-        resultado.innerHTML =
-            "<strong>Comprobación realizada.</strong><br>" +
-            "El código de verificación ingresado es correcto.";
-
-
-        resultado.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+        return;
 
     }
 
 
+    /* =====================================================
+       VALIDAR CSV
+    ===================================================== */
 
-    /* =========================================================
-       INICIAR CAPTCHA
-    ========================================================= */
+    if (!validarCSV()) {
 
-    window.addEventListener(
-        "DOMContentLoaded",
-        function () {
+        mensaje.style.display =
+            "block";
 
-            generarCaptcha();
+        mensaje.style.color =
+            "#a94442";
 
-        }
+        mensaje.textContent =
+            "El Código Seguro de Verificación no es válido.";
+
+        document
+            .getElementById(
+                "codigoCSV"
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       VALIDAR CAPTCHA
+    ===================================================== */
+
+    if (!validarCaptcha()) {
+
+        mensaje.style.display =
+            "block";
+
+        mensaje.style.color =
+            "#a94442";
+
+        mensaje.textContent =
+            "El código CAPTCHA no coincide con la imagen.";
+
+        generarCaptcha();
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       TODO CORRECTO
+    ===================================================== */
+
+    mensaje.style.display =
+        "block";
+
+    mensaje.style.color =
+        "#3c763d";
+
+    mensaje.textContent =
+        "Comprobación realizada correctamente.";
+
+
+    /*
+       Mostrar el acta.
+    */
+
+    mostrarActa(codigoCSV);
+
+}
+
+
+/* =========================================================
+   ENTER EN LOS CAMPOS
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        generarCaptcha();
+
+
+        /*
+           Permitir presionar ENTER
+           para realizar la comprobación.
+        */
+
+        document
+            .getElementById(
+                "codigoCSV"
+            )
+            .addEventListener(
+                "keydown",
+                function (evento) {
+
+                    if (
+                        evento.key === "Enter"
+                    ) {
+
+                        realizarComprobacion();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "captchaUsuario"
+            )
+            .addEventListener(
+                "keydown",
+                function (evento) {
+
+                    if (
+                        evento.key === "Enter"
+                    ) {
+
+                        realizarComprobacion();
+
+                    }
+
+                }
+            );
+
+    }
+);
+
+
+/* =========================================================
+   MENÚ LATERAL
+========================================================= */
+
+function unadAbrirMenu() {
+
+    const menu =
+        document.getElementById(
+            "unadMenuLateral"
+        );
+
+    const overlay =
+        document.getElementById(
+            "unadMenuOverlay"
+        );
+
+    menu.classList.add(
+        "activo"
     );
+
+    overlay.classList.add(
+        "activo"
+    );
+
+}
+
+
+function unadCerrarMenu() {
+
+    const menu =
+        document.getElementById(
+            "unadMenuLateral"
+        );
+
+    const overlay =
+        document.getElementById(
+            "unadMenuOverlay"
+        );
+
+    menu.classList.remove(
+        "activo"
+    );
+
+    overlay.classList.remove(
+        "activo"
+    );
+
+}
+
+
+function unadAlternarSubmenu(boton) {
+
+    const submenu =
+        boton.nextElementSibling;
+
+
+    if (
+        submenu.classList.contains(
+            "abierto"
+        )
+    ) {
+
+        submenu.classList.remove(
+            "abierto"
+        );
+
+        boton.querySelector(
+            "strong"
+        ).textContent = "+";
+
+    }
+
+    else {
+
+        submenu.classList.add(
+            "abierto"
+        );
+
+        boton.querySelector(
+            "strong"
+        ).textContent = "−";
+
+    }
+
+}
 
 </script>
 
