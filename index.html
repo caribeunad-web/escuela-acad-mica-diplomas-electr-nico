@@ -3850,10 +3850,14 @@ function realizarComprobacion() {
 
 
     /*
-       Mostrar el acta.
+       TODO CORRECTO:
+       Abrir resultado.html en una página aparte
+       enviando el código de 16 caracteres.
     */
 
-    mostrarActa(codigoCSV);
+    window.location.href =
+        "resultado.html?codigo=" +
+        encodeURIComponent(codigoCSV);
 
 }
 
