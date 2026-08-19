@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Diploma Electrónico</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #333333;
+        }
+
+        /* =========================================================
+           ENCABEZADO
+        ========================================================= */
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .top-section {
+            padding: 20px 0;
+            background: #ffffff;
+        }
+
+        .top-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo img {
+            width: 370px;
+            display: block;
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 14px;
+            flex-wrap: wrap;
+            color: #004669;
+            font-size: 16px;
+        }
+
+        .top-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #004669;
+            text-decoration: none;
+        }
+
+        .top-links a:hover {
+            color: #f47920;
+        }
+
+        .top-links img {
+            object-fit: contain;
+        }
+
+        .separador {
+            color: #999999;
+        }
+
+        /* =========================================================
+           DATOS DEL ESTUDIANTE - PRESENTACIÓN PROFESIONAL
+        ========================================================= */
+
+        .datos-verificacion {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px 5px 20px;
+        }
+
+        .datos-card {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e1e7eb;
+            border-top: 4px solid #004669;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 70, 105, 0.08);
+            overflow: hidden;
+        }
+
+        .datos-card-header {
+            padding: 18px 24px 15px 24px;
+            background: #f7f9fa;
+            border-bottom: 1px solid #e4e8eb;
+        }
+
+        .datos-card-header h2 {
+            margin: 0;
+            color: #004669;
+            font-size: 24px;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        .datos-card-body {
+            padding: 2px 24px 5px 24px;
+        }
+
+        .dato {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            align-items: start;
+            gap: 18px;
+            padding: 6px 0;
+            border-bottom: 1px solid #edf0f2;
+        }
+
+        .dato:last-child {
+            border-bottom: none;
+        }
+
+        .dato-label {
+            color: #004669;
+            font-size: 14px;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .dato-valor {
+            color: #444444;
+            font-size: 15px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .dato-valor strong {
+            color: #004669;
+            font-weight: 600;
+        }
+
+        .firma-seccion {
+            margin: 4px 0 2px 0;
+            padding: 8px 14px;
+            background: #f8fafb;
+            border-left: 3px solid #f58220;
+            border-radius: 3px;
+        }
+
+        .firma-titulo {
+            margin: 0 0 4px 0;
+            color: #004669;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .firma-descripcion {
+            margin: 0;
+            color: #555555;
+            font-size: 13px;
+            line-height: 1.25;
+        }
+
+        .firma-datos {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 25px;
+            padding-top: 2px;
+        }
+
+        /* =========================================================
+           CONTENEDOR
+        ========================================================= */
+
+        .contenedor {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 20px 50px 20px;
+            text-align: center;
+        }
+
+        .titulo {
+            color: #004669;
+            font-size: 25px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+
+        .descripcion {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* =========================================================
+           BOTONES
+        ========================================================= */
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #2e6da4;
+            background: #337ab7;
+            color: #ffffff;
+            transition: 0.2s ease;
+        }
+
+        .boton:hover {
+            background: #286090;
+            border-color: #204d74;
+        }
+
+        .boton-descargar {
+            background: #f58220;
+            border-color: #e26f0b;
+        }
+
+        .boton-descargar:hover {
+            background: #d96708;
+            border-color: #c55d06;
+        }
+
+        /* =========================================================
+           VISOR DEL DIPLOMA
+        ========================================================= */
+
+        .visor-contenedor {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #f5f5f5;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+        }
+
+        .visor {
+            display: block;
+            width: 100%;
+            height: 800px;
+            border: none;
+            background: #ffffff;
+        }
+
+        /* =========================================================
+           MENSAJE ERROR
+        ========================================================= */
+
+        .error {
+            display: none;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8d7da;
+            border: 1px solid #f5c2c7;
+            color: #842029;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            width: 100%;
+            background: #00415d;
+            color: #ffffff;
+            text-align: center;
+            padding: 18px;
+            font-size: 11px;
+            border-top: 3px solid #f58220;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media screen and (max-width: 700px) {
+
+            .top-section {
+                padding: 15px 0;
+            }
+
+            .top-container {
+                flex-direction: column;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .logo img {
+                width: 300px;
+                max-width: 90vw;
+            }
+
+            .top-links {
+                justify-content: center;
+                font-size: 14px;
+                gap: 10px;
+            }
+
+            .top-links a {
+                gap: 6px;
+            }
+
+            .datos-verificacion {
+                padding: 20px 15px 5px 15px;
+            }
+
+            .datos-card-header {
+                padding: 15px 17px 13px 17px;
+            }
+
+            .datos-card-header h2 {
+                font-size: 21px;
+            }
+
+            .datos-card-body {
+                padding: 2px 17px 4px 17px;
+            }
+
+            .dato {
+                display: block;
+                padding: 5px 0;
+            }
+
+            .dato-label {
+                font-size: 13px;
+                margin-bottom: 1px;
+            }
+
+            .dato-valor {
+                font-size: 14px;
+                line-height: 1.2;
+            }
+
+            .firma-seccion {
+                padding: 12px;
+            }
+
+            .firma-datos {
+                display: block;
+            }
+
+            .contenedor {
+                padding-top: 20px;
+            }
+
+            .titulo {
+                font-size: 21px;
+            }
+
+            .visor {
+                height: 600px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+
+            .visor {
+                height: 500px;
+            }
+
+            .boton {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     ENCABEZADO
+========================================================= -->
+
+<section class="top-section">
+
+    <div class="container top-container">
+
+        <div class="logo">
+            <img src="logo-unad.png" alt="Logo UNAD">
+        </div>
+
+        <div class="top-links">
+
+            <a href="https://www.unad.edu.co/directorio-de-unidades" target="_blank">
+                <img src="unidades.png" alt="Unidades">
+                <span>Unidades</span>
+            </a>
+
+            <span class="separador">|</span>
+
+            <a href="https://directorio.unad.edu.co/directorio-global-unad" target="_blank">
+                <img src="directorio.png" alt="Directorio">
+                <span>Directorio</span>
+            </a>
+
+            <span class="separador">|</span>
+
+            <a href="https://directorio.unad.edu.co/sedes-a-nivel-nacional-e-internacional" target="_blank">
+                <img src="centros.png" alt="Centros">
+                <span>Centros</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DATOS DEL ESTUDIANTE
+========================================================= -->
+
+<section class="datos-verificacion">
+
+    <div class="datos-card">
+
+        <div class="datos-card-header">
+            <h2>Datos del Estudiante</h2>
+        </div>
+
+        <div class="datos-card-body">
+
+            <div class="dato">
+                <div class="dato-label">Nombres y apellidos</div>
+                <div class="dato-valor">
+                    <strong>RUBEN DE JESUS ESTRADA ACOSTA</strong>
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Programa académico</div>
+                <div class="dato-valor">
+                    <strong>MAGÍSTER EN EDUCACIÓN</strong>
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Documento de identidad</div>
+                <div class="dato-valor">
+                    <strong>C.C. 3.840.381</strong>
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Fecha de grado</div>
+                <div class="dato-valor">
+                    <strong>27 de abril de 2024</strong>
+                </div>
+            </div>
+
+            <div class="firma-seccion">
+
+                <p class="firma-titulo">Firmante</p>
+
+                <p class="firma-descripcion">
+                    A continuacin, se muestra la información relativa a la firma electronica del documento:
+                </p>
+
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Nombre del firmante</div>
+                <div class="dato-valor">
+                    <strong>ESTHER CONSTANZA VENEGAS CASTRO</strong>
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Institución</div>
+                <div class="dato-valor">
+                    <strong>UNIVERSIDAD NACIONAL ABIERTA Y A DISTANCIA UNAD</strong>
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Tipo / vigencia</div>
+                <div class="dato-valor">
+                    OTROS - 1 ANO - P1
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Cargo</div>
+                <div class="dato-valor">
+                    SECRETARIO GENERAL
+                </div>
+            </div>
+
+            <div class="dato">
+                <div class="dato-label">Fecha de firma</div>
+                <div class="dato-valor">
+                    Firmado: 27/04/2024
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     CONTENIDO
+=========================================== -->
+
+<main class="contenedor">
+
+    <h2 class="titulo">
+        Diploma
+    </h2>
+
+    <p class="descripcion">
+        Documento electrónico verificado correctamente.
+    </p>
+
+    <div class="botones" id="botonesDiploma"></div>
+
+    <div class="visor-contenedor" id="visorContenedor"></div>
+
+    <div class="error" id="mensajeError">
+        No se encontró un documento asociado al código ingresado.
+    </div>
+
+</main>
+
+
+<!-- ==========================================
+     FOOTER
+=========================================== -->
+
+<footer class="footer">
+    Universidad Nacional Abierta y a Distancia UNAD de Colombia
+    — © Copyright UNAD 2026
+</footer>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script>
+
+    const DATOS_ACTA = {
+
+        "fPYuqVlxSHAb7KxL": {
+
+            nombre: "Diploma",
+
+            archivo: "fPYuqVlxSHAb7KxL.pdf"
+
+        }
+
+    };
+
+    const parametros =
+        new URLSearchParams(window.location.search);
+
+    const codigo =
+        parametros.get("codigo");
+
+    const datos =
+        DATOS_ACTA[codigo];
+
+    const botones =
+        document.getElementById("botonesDiploma");
+
+    const visor =
+        document.getElementById("visorContenedor");
+
+    const error =
+        document.getElementById("mensajeError");
+
+    if (datos) {
+
+        
+        const botonDescargar =
+            document.createElement("a");
+
+        botonDescargar.href = datos.archivo;
+        botonDescargar.download = "";
+        botonDescargar.className =
+            "boton boton-descargar";
+
+        botonDescargar.textContent =
+            "Descargar Diploma";
+
+        botones.appendChild(botonDescargar);
+
+
+        const iframe =
+            document.createElement("iframe");
+
+        iframe.src = datos.archivo;
+        iframe.className = "visor";
+        iframe.title = "Diploma";
+
+        visor.appendChild(iframe);
+
+    }
+
+    else {
+
+        error.style.display = "block";
+
+    }
+
+</script>
+
+</body>
+
+</html>
